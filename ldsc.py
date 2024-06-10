@@ -361,14 +361,13 @@ def ldscore(args, log):
         M_5_50 = [np.sum(geno_array.maf > 0.05)]
 
     # print .M
-    fout_M = open(args.out + '.'+ file_suffix +'.M','wb')
-    print('\t'.join(map(str,M)), file=fout_M)
-    fout_M.close()
+    with open(args.out + '.'+ file_suffix +'.M','w') as fout_M:
+        fout_M.write('\t'.join(map(str,M)))
 
     # print .M_5_50
-    fout_M_5_50 = open(args.out + '.'+ file_suffix +'.M_5_50','wb')
-    print('\t'.join(map(str,M_5_50)), file=fout_M_5_50)
-    fout_M_5_50.close()
+    with open(args.out + '.'+ file_suffix +'.M_5_50','w') as fout_M_5_50:
+        fout_M_5_50.write('\t'.join(map(str,M_5_50)))
+   
 
     # print annot matrix
     if (args.cts_bin is not None) and not args.no_print_annot:
